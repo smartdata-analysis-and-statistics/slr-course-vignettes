@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - part1_study_effects_task.qmd
+    - part1_study_effects_solution.qmd
+    - part1_oocytes_task.qmd
+    - part1_oocytes_solution.qmd
+    - part2_fixed_effects_task.qmd
+    - part2_fixed_effects_solution.qmd
+    - part2_oocytes_task.qmd
+    - part2_oocytes_solution.qmd
+    - part3_random_effects_task.qmd
+    - part3_random_effects_solution.qmd
+    - part3_oocytes_task.qmd
+    - part3_oocytes_solution.qmd
+  resources:
+    - sdas_large.png
+    - deae274.pdf
+    - ongoing_pregnancy_deae274.rds
+    - number_oocytes_deae274.rds
+
+website:
+  title: "Meta-analysis Practicals"
+  navbar: false
+  page-navigation: true
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    include-before-body: _brand.html

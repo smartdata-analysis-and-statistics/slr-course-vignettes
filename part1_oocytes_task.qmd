@@ -1,0 +1,144 @@
+---
+title: "Study effects: number of oocytes retrieved"
+subtitle: "Computer Practical"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    embed-resources: true
+    include-before-body: _brand.html
+execute:
+  echo: true
+  message: false
+  warning: true
+  error: false
+  fig-width: 9
+  fig-height: 7
+---
+
+::: {.callout-note title="How to use this practical"}
+Complete the R tasks and use the discussion prompts to interpret your results. The worked [solution](part1_oocytes_solution.html) is a separate page; try these tasks first. Keep `number_oocytes_deae274.rds` in the project directory.
+:::
+
+# Introduction
+
+Meta-analysis combines estimates from studies that address a related question. Before combining results, we need to understand what each study measured, calculate its effect estimate and quantify its sampling uncertainty.
+
+This practical uses six studies comparing the **mean number of oocytes retrieved** after treatment with a biosimilar follitropin alfa product or GONAL-f. The supplied data contain study-level sample sizes, means, and standard deviations. 
+
+# 1. Learning objectives
+
+By completing this part, you will be able to:
+
+- Inspect and validate a study-level dataset.
+- Calculate a mean difference and its standard error from two independent groups.
+- Use `metafor::escalc()` to calculate study mean differences and sampling variances.
+- Interpret the direction, units, and uncertainty of a study-level mean difference.
+
+# 2. Prepare and explore the data
+
+Load the packages and read the supplied data. Each row represents one study, and the treatment direction is kept consistent: biosimilar minus GONAL-f.
+
+```{r}
+#| warning: false
+library(metafor)
+library(knitr)
+dat <- readRDS("number_oocytes_deae274.rds")
+```
+
+The main variables are:
+
+| Variables | Meaning |
+|---|---|
+| `trial_id`, `study_label`, `primary_author`, `year` | Trial and publication identifiers |
+| `country`, `biosimilar`, `originator` | Setting and treatment products |
+| `biosimilar_n`, `biosimilar_mean`, `biosimilar_sd` | Sample size, mean, and SD in the biosimilar arm |
+| `originator_n`, `originator_mean`, `originator_sd` | Sample size, mean, and SD in the GONAL-f arm |
+
+**Tasks:**
+
+1. Inspect the data dimensions, variable names, study labels, and treatment products.
+2. Check for missing values and duplicated trial identifiers. Confirm that sample sizes and standard deviations are positive.
+3. Summarize the sample sizes and the number of distinct biosimilar products.
+
+```{r}
+dim(dat)
+names(dat)
+str(dat)
+summary(dat)
+knitr::kable(dat, caption = "Study-level summaries transcribed from Figure 3D")
+sum(is.na(dat))
+anyDuplicated(dat$trial_id)
+range(dat$biosimilar_n)
+range(dat$originator_n)
+range(dat$biosimilar_sd)
+range(dat$originator_sd)
+table(dat$biosimilar)
+```
+
+**Questions to discuss:**
+
+1. What is the unit of analysis, and why are there six rows rather than one row per participant?
+2. Why must the treatment direction stay the same in all six comparisons?
+
+# 3. Calculate each study's mean difference
+
+The mean difference keeps the original measurement scale: **oocytes per participant**. For study $i$, define
+
+$$MD_i=\bar{x}_{Bi}-\bar{x}_{Oi},$$
+
+where $\bar{x}_{Bi}$ and $\bar{x}_{Oi}$ are the sample means in the biosimilar and GONAL-f arms. A positive value means that the observed mean is higher in the biosimilar arm; zero is the no-difference value.
+
+Assuming independent treatment arms, the sampling variance is
+
+$$v_i=\frac{s_{Bi}^2}{n_{Bi}}+\frac{s_{Oi}^2}{n_{Oi}},\qquad SE_i=\sqrt{v_i}.$$
+
+An approximate 95% confidence interval is $MD_i\pm1.96SE_i$. It quantifies sampling uncertainty under this calculation; it does not establish clinical importance or equivalence.
+
+**Main task:** Use `metafor::escalc(measure = "MD")` to calculate each study's mean difference and sampling variance. Report its standard error and approximate 95% confidence interval.
+
+```{r}
+es <- metafor::escalc(
+  measure = "MD",
+  m1i = biosimilar_mean, sd1i = biosimilar_sd, n1i = biosimilar_n,
+  m2i = originator_mean, sd2i = originator_sd, n2i = originator_n,
+  data = dat
+)
+dat$yi <- es$yi
+dat$vi <- es$vi
+dat$sei <- sqrt(dat$vi)
+dat$ci_lower <- dat$yi - qnorm(0.975) * dat$sei
+dat$ci_upper <- dat$yi + qnorm(0.975) * dat$sei
+
+knitr::kable(
+  dat[c("study_label", "biosimilar", "yi", "vi", "sei",
+        "ci_lower", "ci_upper")],
+  digits = 3,
+  caption = "Study mean differences and approximate uncertainty"
+)
+```
+
+::: {.callout-note title="Optional: calculate a study mean difference by hand"}
+For each study, subtract the arm means and calculate the variance from the two arm standard deviations and sample sizes. Compare the results with `es` above.
+
+```{r}
+yi_manual <- dat$biosimilar_mean - dat$originator_mean
+vi_manual <- dat$biosimilar_sd^2 / dat$biosimilar_n +
+  dat$originator_sd^2 / dat$originator_n
+cbind(yi_manual, yi_metafor = dat$yi, vi_manual, vi_metafor = dat$vi)
+```
+:::
+
+Finally, identify which study estimates have confidence intervals that include zero. Consider how the rounded input values limit that comparison.
+
+**Questions to discuss:**
+
+1. Interpret the mean difference for the first study, including its unit and direction.
+2. Why is a mean difference suitable here, rather than a risk ratio?
+3. What does a study confidence interval that includes zero tell you? Why is that not evidence of equivalence?
+4. Why might the reconstructed confidence intervals differ slightly from the intervals shown in the source figure?

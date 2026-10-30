@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='756.00pt' height='540.00pt' viewBox='0 0 756.00 540.00'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw3NTYuMDB8MC4wMHw1NDAuMDA='>
+    <rect x='0.00' y='0.00' width='756.00' height='540.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw3NTYuMDB8MC4wMHw1NDAuMDA=)'>
+<text x='30.24' y='27.72' style='font-size: 17.40px; font-weight: bold;fill: #26476B; font-family: "Arial";' textLength='329.56px' lengthAdjust='spacingAndGlyphs'>Unweighted average of study risk ratios</text>
+<text x='30.24' y='50.56' style='font-size: 12.00px;fill: #5D6873; font-family: "Arial";' textLength='332.53px' lengthAdjust='spacingAndGlyphs'>Each study estimate contributes equally, whatever its precision</text>
+<text x='45.36' y='81.64' style='font-size: 9.36px; font-weight: bold;fill: #26476B; font-family: "Arial";' textLength='107.91px' lengthAdjust='spacingAndGlyphs'>OBSERVED STUDY RRs</text>
+<text x='665.28' y='80.72' text-anchor='middle' style='font-size: 9.36px; font-weight: bold;fill: #B86A16; font-family: "Arial";' textLength='147.09px' lengthAdjust='spacingAndGlyphs'>One equal contribution per study</text>
+<text x='45.36' y='116.71' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='79.58px' lengthAdjust='spacingAndGlyphs'>Rettenbacher 2015</text>
+<line x1='257.04' y1='113.40' x2='650.16' y2='113.40' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='404.86' cy='113.40' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='106.92' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='116.23' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<text x='45.36' y='146.45' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='63.45px' lengthAdjust='spacingAndGlyphs'>Strowitzki 2016</text>
+<line x1='257.04' y1='143.10' x2='650.16' y2='143.10' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='406.40' cy='143.10' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='136.62' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='145.93' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<text x='45.36' y='176.11' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='73.36px' lengthAdjust='spacingAndGlyphs'>Barakhoeva 2019</text>
+<line x1='257.04' y1='172.80' x2='650.16' y2='172.80' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='404.46' cy='172.80' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='166.32' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='175.63' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<text x='45.36' y='205.81' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='35.38px' lengthAdjust='spacingAndGlyphs'>Hu 2020</text>
+<line x1='257.04' y1='202.50' x2='650.16' y2='202.50' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='398.85' cy='202.50' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='196.02' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='205.33' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<text x='45.36' y='234.64' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='66.59px' lengthAdjust='spacingAndGlyphs'>Pasqualini 2021</text>
+<line x1='257.04' y1='232.20' x2='650.16' y2='232.20' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='605.49' cy='232.20' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='225.72' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='235.03' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<text x='45.36' y='265.21' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='54.62px' lengthAdjust='spacingAndGlyphs'>Rashidi 2021</text>
+<line x1='257.04' y1='261.90' x2='650.16' y2='261.90' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='379.24' cy='261.90' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='255.42' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='264.73' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<text x='45.36' y='294.91' style='font-size: 9.36px;fill: #26476B; font-family: "Arial";' textLength='40.58px' lengthAdjust='spacingAndGlyphs'>Hu 2023a</text>
+<line x1='257.04' y1='291.60' x2='650.16' y2='291.60' style='stroke-width: 0.75; stroke: #E8EDF1;' />
+<circle cx='390.36' cy='291.60' r='3.24' style='stroke-width: 0.75; stroke: #FFFFFF; fill: #26476B;' />
+<rect x='645.62' y='285.12' width='39.31' height='12.96' style='stroke-width: 0.75; stroke: #B86A16; fill: #F8EADB;' />
+<text x='665.28' y='294.43' text-anchor='middle' style='font-size: 7.92px;fill: #B86A16; font-family: "Arial";' textLength='10.98px' lengthAdjust='spacingAndGlyphs'>1/7</text>
+<line x1='257.04' y1='313.20' x2='650.16' y2='313.20' style='stroke-width: 0.75; stroke: #5D6873;' />
+<line x1='257.04' y1='313.20' x2='257.04' y2='317.52' style='stroke-width: 0.75; stroke: #5D6873;' />
+<line x1='328.52' y1='313.20' x2='328.52' y2='317.52' style='stroke-width: 0.75; stroke: #5D6873;' />
+<line x1='399.99' y1='313.20' x2='399.99' y2='317.52' style='stroke-width: 0.75; stroke: #5D6873;' />
+<line x1='471.47' y1='313.20' x2='471.47' y2='317.52' style='stroke-width: 0.75; stroke: #5D6873;' />
+<line x1='542.95' y1='313.20' x2='542.95' y2='317.52' style='stroke-width: 0.75; stroke: #5D6873;' />
+<line x1='614.42' y1='313.20' x2='614.42' y2='317.52' style='stroke-width: 0.75; stroke: #5D6873;' />
+<text x='257.04' y='331.09' text-anchor='middle' style='font-size: 9.36px;fill: #5D6873; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>0.4</text>
+<text x='328.52' y='331.09' text-anchor='middle' style='font-size: 9.36px;fill: #5D6873; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>0.6</text>
+<text x='399.99' y='331.09' text-anchor='middle' style='font-size: 9.36px;fill: #5D6873; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>0.8</text>
+<text x='471.47' y='331.09' text-anchor='middle' style='font-size: 9.36px;fill: #5D6873; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>1.0</text>
+<text x='542.95' y='331.15' text-anchor='middle' style='font-size: 9.36px;fill: #5D6873; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>1.2</text>
+<text x='614.42' y='331.15' text-anchor='middle' style='font-size: 9.36px;fill: #5D6873; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>1.4</text>
+<line x1='471.47' y1='318.60' x2='471.47' y2='94.50' style='stroke-width: 0.90; stroke: #8A969F; stroke-dasharray: 4.80,4.80;' />
+<text x='471.47' y='91.33' text-anchor='middle' style='font-size: 8.64px;fill: #5D6873; font-family: "Arial";' textLength='76.45px' lengthAdjust='spacingAndGlyphs'>RR = 1 (equal risks)</text>
+<line x1='427.09' y1='318.60' x2='427.09' y2='94.50' style='stroke-width: 1.50; stroke: #B86A16; stroke-dasharray: 8.00,8.00;' />
+<text x='427.09' y='306.78' text-anchor='middle' style='font-size: 9.36px; font-weight: bold;fill: #B86A16; font-family: "Arial";' textLength='57.98px' lengthAdjust='spacingAndGlyphs'>Mean = 0.876</text>
+<text x='453.60' y='351.03' text-anchor='middle' style='font-size: 10.56px;fill: #26476B; font-family: "Arial";' textLength='176.45px' lengthAdjust='spacingAndGlyphs'>Study risk ratio (biosimilar / GONAL-f)</text>
+<text x='45.36' y='383.77' style='font-size: 9.36px; font-weight: bold;fill: #26476B; font-family: "Arial";' textLength='121.22px' lengthAdjust='spacingAndGlyphs'>EQUAL-WEIGHT AVERAGE</text>
+<rect x='45.36' y='399.60' width='189.00' height='70.20' style='stroke-width: 0.75; stroke: #CBD8E1; fill: #EEF4F8;' />
+<text x='127.21' y='434.34' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='9.97px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='137.17' y='434.34' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='9.97px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='133.94' y='428.13' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='6.47px' lengthAdjust='spacingAndGlyphs'>^</text>
+<text x='147.14' y='437.28' style='font-size: 9.66px;fill: #26476B; font-family: "Arial";' textLength='5.38px' lengthAdjust='spacingAndGlyphs'>1</text>
+<text x='283.50' y='440.19' text-anchor='middle' style='font-size: 15.60px;fill: #5D6873; font-family: "Arial";' textLength='9.11px' lengthAdjust='spacingAndGlyphs'>+</text>
+<rect x='325.08' y='399.60' width='189.00' height='70.20' style='stroke-width: 0.75; stroke: #CBD8E1; fill: #EEF4F8;' />
+<text x='406.93' y='434.34' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='9.97px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='416.89' y='434.34' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='9.97px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='413.66' y='428.13' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='6.47px' lengthAdjust='spacingAndGlyphs'>^</text>
+<text x='426.86' y='437.28' style='font-size: 9.66px;fill: #26476B; font-family: "Arial";' textLength='5.38px' lengthAdjust='spacingAndGlyphs'>2</text>
+<text x='555.66' y='438.24' text-anchor='middle' style='font-size: 12.00px;fill: #5D6873; font-family: "Arial";' textLength='37.33px' lengthAdjust='spacingAndGlyphs'>+  ...  +</text>
+<rect x='635.04' y='399.60' width='75.60' height='70.20' style='stroke-width: 0.75; stroke: #CBD8E1; fill: #EEF4F8;' />
+<text x='660.19' y='434.40' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='9.97px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='670.15' y='434.40' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='9.97px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='666.92' y='428.19' style='font-size: 13.80px;fill: #26476B; font-family: "Arial";' textLength='6.47px' lengthAdjust='spacingAndGlyphs'>^</text>
+<text x='680.12' y='437.22' style='font-size: 9.66px;fill: #26476B; font-family: "Arial";' textLength='5.38px' lengthAdjust='spacingAndGlyphs'>7</text>
+<text x='237.02' y='494.24' style='font-size: 12.00px;fill: #B86A16; font-family: "Arial";' textLength='140.03px' lengthAdjust='spacingAndGlyphs'>Each estimate has weight </text>
+<text x='377.05' y='494.24' style='font-size: 12.00px;fill: #B86A16; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>1</text>
+<polyline points='385.28,496.01 388.39,483.88 ' style='stroke-width: 0.75; stroke: #B86A16;' />
+<text x='389.95' y='494.24' style='font-size: 12.00px;fill: #B86A16; font-family: "Arial";' textLength='6.00px' lengthAdjust='spacingAndGlyphs'>k</text>
+<text x='395.96' y='494.24' style='font-size: 12.00px;fill: #B86A16; font-family: "Arial";' textLength='105.69px' lengthAdjust='spacingAndGlyphs'>; arithmetic mean = </text>
+<text x='501.64' y='494.24' style='font-size: 12.00px;fill: #B86A16; font-family: "Arial";' textLength='8.67px' lengthAdjust='spacingAndGlyphs'>R</text>
+<text x='510.31' y='494.24' style='font-size: 12.00px;fill: #B86A16; font-family: "Arial";' textLength='8.67px' lengthAdjust='spacingAndGlyphs'>R</text>
+<polyline points='501.64,483.93 518.98,483.93 ' style='stroke-width: 0.75; stroke: #B86A16;' />
+<text x='45.36' y='521.17' style='font-size: 8.64px;fill: #5D6873; font-family: "Arial";' textLength='450.38px' lengthAdjust='spacingAndGlyphs'>Descriptive average of observed estimates; it does not assume one common true effect or account for study precision.</text>
+</g>
+</g>
+</svg>

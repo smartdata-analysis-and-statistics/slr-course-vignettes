@@ -1,0 +1,41 @@
+---
+title: "Meta-analysis practicals"
+subtitle: "Biosimilar follitropin alfa outcomes"
+author:
+  - name: "Smart Data Analysis and Statistics"
+date: "2026"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: right
+    number-sections: false
+---
+
+# Welcome
+
+These practicals use study-level data to compare biosimilar follitropin alfa products with the reference product GONAL-f. They cover two outcomes: **ongoing pregnancy**, a binary outcome summarized with a risk ratio (RR), and **number of oocytes retrieved**, a continuous outcome summarized with a mean difference (MD).
+
+The ongoing-pregnancy practical uses the supplied [`ongoing_pregnancy_deae274.rds` dataset](ongoing_pregnancy_deae274.rds), which contains event counts and denominators for seven study comparisons. The oocyte practical uses the supplied [`number_oocytes_deae274.rds` dataset](number_oocytes_deae274.rds), with sample sizes, means, and standard deviations for six comparisons. Those summaries were transcribed from Figures 2B and 3D in the paper [review PDF](deae274.pdf) (*Human Reproduction*, 2025, 40(2), 343–359). Both datasets contain study-level summaries, not individual participant records.
+
+For ongoing pregnancy, an RR compares the risk in the biosimilar arm with the risk in the GONAL-f arm; RR = 1 is the no-difference value. For oocyte count, the MD is the biosimilar-arm mean minus the GONAL-f mean; MD = 0 is the no-difference value. Keep these outcome scales in mind when comparing results across the practicals.
+
+## Practical materials
+
+Start with Part 1 for the outcome-specific data and study effects, then continue to the pooled analyses. Each practical has a task page and a companion worked solution.
+
+| Outcome | Part | Focus | Practical | Worked solution |
+|---|---|---|---|---|
+| **Ongoing pregnancy** (binary; RR) | 1 | Prepare data and calculate study effects | [Task](part1_study_effects_task.html) | [Solution](part1_study_effects_solution.html) |
+| **Ongoing pregnancy** (binary; RR) | 2 | Common-effect / fixed-effect meta-analysis | [Task](part2_fixed_effects_task.html) | [Solution](part2_fixed_effects_solution.html) |
+| **Ongoing pregnancy** (binary; RR) | 3 | Random-effects model, heterogeneity, prediction, and validation | [Task](part3_random_effects_task.html) | [Solution](part3_random_effects_solution.html) |
+| **Oocyte count** (continuous; MD) | 1 | Prepare data and calculate study effects | [Task](part1_oocytes_task.html) | [Solution](part1_oocytes_solution.html) |
+| **Oocyte count** (continuous; MD) | 2 | Common-effect meta-analysis | [Task](part2_oocytes_task.html) | [Solution](part2_oocytes_solution.html) |
+| **Oocyte count** (continuous; MD) | 3 | Random-effects model, heterogeneity, prediction, and validation | [Task](part3_oocytes_task.html) | [Solution](part3_oocytes_solution.html) |
+
+
+## Getting started
+
+Install [R](https://cran.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/). The practical pages identify the R packages they use and include code that can be run in RStudio. Keep the relevant dataset in the project directory when running each task.
+
+The practicals accompany the online course [An Introduction to Meta-analysis](https://sdas.thinkific.com/courses/metaanalysisintro).

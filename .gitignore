@@ -1,0 +1,16 @@
+# Quarto output and caches
+_site/
+.quarto/
+_freeze/
+*_cache/
+*_files/
+*.knit.md
+
+# R and RStudio local files
+.Rproj.user/
+.Rhistory
+Rplots.pdf
+.DS_Store
+
+# Legacy rendered output
+practicalPF.html

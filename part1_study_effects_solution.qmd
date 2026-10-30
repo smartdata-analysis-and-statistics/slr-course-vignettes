@@ -1,0 +1,216 @@
+---
+title: "Data preparation"
+subtitle: "Computer Practical Solutions"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    embed-resources: true
+    include-before-body: _brand.html
+execute:
+  echo: true
+  message: false
+  warning: true
+  error: false
+  fig-width: 9
+  fig-height: 7
+---
+
+::: {.callout-note title="How to use this solution"}
+The companion [task page](part1_study_effects_task.html) contains the prompts. Review the tasks and discussion questions before reading the worked solutions below.
+:::
+
+# Introduction 
+
+A meta-analysis combines results from several studies that address a similar question. Each study provides an estimate, but those estimates may differ because of chance, study size, or differences in the participants and methods. Combining them can give a more precise summary than relying on one study alone, while still requiring us to examine how comparable the studies are.
+
+In this practical, we will use data from seven studies comparing ongoing pregnancy rates after assisted reproductive treatment. We will first explore the dataset and calculate each study’s risk ratio, which compares the ongoing pregnancy risk between its two treatment groups. In later practicals, we will combine these study estimates and examine their uncertainty and consistency. Because the studies include several different biosimilar products, the combined result summarizes this set of studies; it does not show that every product has the same effect or establish that the products are equivalent.
+
+# 1. Expected Background Knowledge
+
+To get the most out of this practical, we recommend the following background knowledge:
+
+-   Basic R programming skills (e.g., reading data, working with data frames)
+-   Fundamental understanding of descriptive statistics (means, proportions, distributions)
+-   Familiarity with risk measures in a clinical or epidemiological context.
+
+# 2. Learning Objectives
+
+By completing this part, you will be able to:
+
+- Understand what is a meta-analysis
+- Inspect and validate a study-level dataset.
+- Calculate arm risks, risk ratios, log risk ratios, and their sampling uncertainty.
+
+# 3. Preparation
+
+Please complete the following setup steps on your computer:
+
+## 3.1 Install R and RStudio
+
+-   Download and install R from: <https://cran.r-project.org/>
+-   Download and install RStudio (Desktop version) from: <https://posit.co/download/rstudio-desktop/>
+
+## 3.2 Install Required R Packages
+
+Open RStudio and run the following code to install the necessary packages (skip any that are already installed):
+
+```{r}
+#| eval: false
+install.packages(c(
+  "metafor","ggplot2","knitr"
+))
+```
+
+## 3.3 Load Required R Packages
+
+After installing the packages, load them into your R session using the following code:
+
+```{r}
+#| eval: false
+#| include: true
+library(metafor)
+library(knitr)
+```
+
+## 3.4. Load Example Data
+
+The supplied `ongoing_pregnancy_deae274.rds` file stores one row per study. It records two multi-country European studies and five studies listed under Russia, China, Argentina, or Iran. Most biosimilar products occur in only one study, limiting product-level subgroup comparisons.
+
+```{r}
+#| eval: true
+#| include: true
+dat <- readRDS("ongoing_pregnancy_deae274.rds")
+```
+
+The dataset includes:
+
+| Variables | Meaning |
+|---|---|
+| `trial_id`, `study_label`, `primary_author`, `year` | Trial and publication identifiers |
+| `country`, `biosimilar`, `originator` | Setting and treatments |
+| `biosimilar_events`, `biosimilar_total` | Ongoing pregnancies and participants in biosimilar arm |
+| `originator_events`, `originator_total` | Ongoing pregnancies and participants in originator arm |
+
+
+We will use this dataset throughout the practical for data preparation, fixed/random effects modelling and sensitivity analysis.
+
+# 4. Data exploration
+
+Here, the practical uses seven study-level comparisons of pregnancy outcomes after assisted reproductive treatment. In each study, participants received either a biosimilar form of follitropin alfa or the reference product GONAL-f.
+
+The analysis asks: **across these seven studies, how did the ongoing-pregnancy risk in the biosimilar arms compare with the risk in the GONAL-f arms?** We calculate a risk ratio for each study, then use the later practicals to combine and compare those study estimates and examine their uncertainty and consistency.
+
+
+**Tasks:**
+
+1. Inspect its dimensions, column names, study labels, and treatment groups.
+2. Check event counts, totals, missing values, and one row per study. Summarize country and product labels.
+
+```{r}
+#| eval: true
+#| include: true
+# Overall summary
+str(dat)
+summary(dat)
+knitr::kable(dat, caption = "Study-level dataset")
+# Summary byt country and labels
+table(dat$country)
+table(dat$biosimilar)
+```
+
+**Comments on the output:** There are seven rows, one for each study, and 11 columns describing the study, treatment groups, and event counts. The table shows two multi-country European studies and five studies listed under Russia, China, Argentina, or Iran. The event counts do not exceed their group totals, and the checks confirm there are no missing event or total counts and no duplicated trial IDs. Participants are summarized within each treatment arm; they are not separate rows in this dataset. Most biosimilar products appear in only one study, so this dataset cannot support reliable comparisons between individual products.
+
+
+::: {.callout-tip title="Questions for discussion and answers"}
+
+1. **What is the unit of analysis, and why are there seven rows rather than one per participant?** 
+
+The unit is a study-level comparison. Each row summarizes event counts and participant totals for both treatment arms in one study. Individual participant records were not supplied, so the file has seven rows rather than one row per participant.
+
+2. **Why preserve the biosimilar/originator direction?** 
+
+The RR is calculated as biosimilar risk divided by GONAL-f risk. Reversing the groups changes the RR to its reciprocal and reverses the interpretation. Keeping the direction consistent makes results comparable across studies.
+
+:::
+
+## 5.Calculate each study's risk ratio
+
+The risk ratio (RR), also called relative risk, compares the probability of an outcome between two groups. For each group, the probability (risk) is the number of people who experience the outcome divided by the total number of people at risk in that group.
+
+In this analysis, the biosimilar group is the treatment group being compared, and the GONAL-f group is the reference group. So, the RR is:
+
+$$RR_i=\frac{\text{probability of ongoing pregnancy in the biosimilar group}}{\text{probability of ongoing pregnancy in the GONAL-f group}}.$$
+
+For study (i), let ($a_i$) and ($n_{Bi}$) be the number of ongoing pregnancies and participants in the biosimilar group. Let ($c_i$) and ($n_{Oi}$) be the corresponding numbers in the GONAL-f group. Then
+
+$$p_{Bi}=a_i/n_{Bi},\qquad p_{Oi}=c_i/n_{Oi},\qquad RR_i=p_{Bi}/p_{Oi}.$$
+
+An RR of 0.80 means the observed risk in the biosimilar group is 20% lower, in relative terms, than in the GONAL-f group. It does not mean a 20 percentage-point difference. An RR of 1 means the observed risks are equal.
+
+The risk ratio is 1 when both groups have the same risk. If the 95% confidence interval for the risk ratio includes 1, the study does not give clear evidence that the risks differ.  Under a equality test, if the interval does not include 1, it gives evidence of a difference in risk between the groups. The interval does not tell us whether that difference is important in practice.
+
+### Log RR, variance, and standard error
+
+When combining results from studies, we work with the log risk ratio. Ratios are positive and can be unevenly distributed around 1. Taking the logarithm makes equal relative changes in opposite directions symmetric around 0: for example, RR values of 0.5 and 2 have log RRs with equal size but opposite signs. Log RRs are also approximately normally distributed in many settings, which makes them suitable for common pooling methods.
+
+For independent treatment groups, an approximate variance based on the event counts is
+
+$$y_i=\log(RR_i),\qquad v_i\approx \frac{1}{a_i}-\frac{1}{n_{Bi}}+\frac{1}{c_i}-\frac{1}{n_{Oi}},\qquad SE_i=\sqrt{v_i}.$$
+
+Here, (SE_i) is the standard error, a measure of uncertainty in the study's log RR. An approximate 95% CI is calculated on the log scale and then converted back to the RR scale:
+
+$$\exp(y_i\pm1.96SE_i).$$
+
+If a study reports an RR and its log-scale Wald 95% CI ([L_i,U_i]), the standard error can instead be estimated as
+
+$$y_i=\log(RR_i),\qquad SE_i\approx\frac{\log(U_i)-\log(L_i)}{2(1.96)},\qquad v_i=SE_i^2.$$
+
+Combining studies can improve the precision of an overall estimate, but the result still has uncertainty and depends on how comparable the studies are. In this practical, use `metafor::escalc()` to calculate each study's log RR and sampling variance from its group counts.
+
+There are no zero-event groups in this dataset. If a group has zero events, this variance formula cannot be used as written; any adjustment or alternative method would need to be justified.(see https://doi.org/10.3390/ijerph18115527)
+
+**Main task:** Calculate the arm risks for interpretation, then use `metafor::escalc()` to obtain each study's log RR and sampling variance. Report the RR and standard error.
+
+```{r}
+#| eval: true
+dat$risk_b <- dat$biosimilar_events / dat$biosimilar_total
+dat$risk_o <- dat$originator_events / dat$originator_total
+es <- metafor::escalc(measure = "RR", ai = biosimilar_events,
+  bi = biosimilar_total - biosimilar_events, ci = originator_events,
+  di = originator_total - originator_events, data = dat)
+dat$yi <- es$yi
+dat$vi <- es$vi
+dat$sei <- sqrt(dat$vi)
+dat$rr <- exp(dat$yi)
+dat$ci_lower <- exp(dat$yi - qnorm(0.975) * dat$sei)
+dat$ci_upper <- exp(dat$yi + qnorm(0.975) * dat$sei)
+knitr::kable(dat, caption = "Study-level dataset")
+```
+
+**Comments on the output:** The RR is below 1 in six studies and above 1 in one study. Every approximate 95% CI includes 1, so none of these individual study estimates shows a statistically significant difference at the usual 5% level. The intervals are fairly wide, especially for smaller studies, showing the uncertainty in each study's estimate. This does not demonstrate that the treatments have identical risks; it means the individual estimates do not clearly distinguish them.
+
+::: {.callout-note title="Optional: calculate the log RR and variance from the formulas"}
+This check uses the event counts directly. `metafor` remains the main calculation above.
+
+```{r}
+yi_manual <- log(dat$risk_b / dat$risk_o)
+vi_manual <- 1/dat$biosimilar_events - 1/dat$biosimilar_total +
+  1/dat$originator_events - 1/dat$originator_total
+cbind(yi_manual, yi_metafor = dat$yi, vi_manual, vi_metafor = dat$vi)
+```
+:::
+
+
+::: {.callout-tip title="Questions for discussion and answers"}
+
+1. **Why use log RR for pooling, and what is the null value?** The log scale makes ratios more symmetric and suitable for common pooling methods. The null is 0 on the log scale, which corresponds to RR = 1 on the ratio scale.
+2. **Why are RR estimates not interchangeable with other effect measures?** RR compares probabilities over the specified follow-up period. An odds ratio compares odds, while a hazard ratio compares event rates over time. These measures have different meanings and can have different numerical values, so they should not be substituted for one another.
+3. **What is the first study's RR and CI, and why does a non-significant result not prove equivalence?** For Rettenbacher et al. (2015), the estimated RR is 0.814 (95% CI 0.619 to 1.069). In the usual equality test, the null hypothesis is that the groups have the same risk (RR = 1); the alternative is that their risks differ (RR ≠ 1). Because this CI includes 1, we do not reject the equality hypothesis at the 5% level. This does not prove the risks are equal: the CI also allows for lower or higher risk. Equivalence requires a prespecified range of differences considered small enough to be unimportant and a test designed to assess whether the result lies within that range.
+
+::: 
