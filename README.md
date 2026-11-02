@@ -8,7 +8,7 @@ The included GitHub Actions workflow renders the Quarto project when changes are
 
 1. Add this project to a GitHub repository and push the files to its `main` branch.
 2. In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
-3. Open the **Actions** tab and check the `Publish Quarto site to GitHub Pages` workflow. The first successful run deploys the site; later pushes to `main` update it.
+3. Open the **Actions** tab and check the `Deploy Quarto site to GitHub Pages` workflow. The first successful run deploys the site; later pushes to `main` update it.
 
 The rendered website is built in `_site/` and uploaded directly as a Pages artifact. You do not need to commit rendered HTML files. The workflow installs R, `metafor`, and `knitr` because the practical pages run their examples during rendering.
 
