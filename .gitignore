@@ -14,3 +14,6 @@ Rplots.pdf
 
 # Legacy rendered output
 practicalPF.html
+
+/.quarto/
+**/*.quarto_ipynb
