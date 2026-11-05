@@ -128,7 +128,7 @@ kable(data.frame(
 ), digits = 4, caption = "Optional manual check")
 ```
 
-**Comments on the output:** REML estimates $\hat\tau^2=0$, so the conventional random-effects estimate and interval match the common-effect result: RR 0.810 (95% CI 0.701 to 0.935). KH gives the same pooled RR but a narrower interval (0.733 to 0.894) in this dataset. This is a useful reminder that KH is an uncertainty method, not a guarantee that the interval will be wider. All three intervals include 1, so this analysis does not show a clear difference in ongoing-pregnancy risk between treatments. The optional manual calculation gives the same conventional pooled estimate and standard error as REML.
+**Comments on the output:** REML estimates $\hat\tau^2=0$, so the conventional random-effects estimate and interval match the common-effect result: RR 0.810 (95% CI 0.701 to 0.935). KH gives the same pooled RR but a narrower interval (0.733 to 0.894) in this dataset. This is a useful reminder that KH is an uncertainty method, not a guarantee that the interval will be wider. Both intervals are entirely below 1, so the pooled estimates suggest a lower ongoing-pregnancy risk in the biosimilar arms than in the GONAL-f arms. Interpret this cautiously: the analysis combines only seven studies of several biosimilar products, and a zero estimate of between-study variance does not prove that all products have the same effect or that no heterogeneity exists. The optional manual calculation gives the same conventional pooled estimate and standard error as REML.
 
 ## Forest plot
 
@@ -156,7 +156,7 @@ forest(re_kh, atransf = exp, refline = 0, slab = dat$study_label,
 1. **What average does the random-effects model estimate?** It estimates the mean of the distribution of true study log RRs. The Part 2 common-effect model estimates one shared true log RR.
 2. **How does $\hat\tau^2$ affect the weights?** Adding it to each study’s variance makes the weights more similar, so the most precise studies have less dominance when $\hat\tau^2>0$. Here, $\hat\tau^2=0$, so the REML weights reduce to the common-effect weights.
 3. **What does KH change?** KH adjusts uncertainty and uses a t distribution. It does not change the pooled RR or REML estimate of $\tau^2$. Its interval can be wider or narrower than the conventional REML interval; here it is narrower.
-4. **How do the model results compare?** The common-effect and conventional REML estimates and intervals coincide because $\hat\tau^2=0$ (RR 0.810, 95% CI 0.701 to 0.935). KH has the same point estimate and a narrower interval (0.733 to 0.894). All three intervals include 1, so the results do not show a clear treatment difference.
+4. **How do the model results compare?** The common-effect and conventional REML estimates and intervals coincide because $\hat\tau^2=0$ (RR 0.810, 95% CI 0.701 to 0.935). KH has the same point estimate and a narrower interval (0.733 to 0.894). Both intervals are below 1, so the pooled estimates suggest lower ongoing-pregnancy risk in the biosimilar arms. This result is limited to these seven studies and the products they evaluated; it does not establish that every biosimilar has the same effect. The estimate of $\hat\tau^2=0$ should not be taken as proof that study effects are identical.
 5. **How does the forest plot compare with Part 2?** It shows the same study estimates, with random-effects weights. Because $\hat\tau^2=0$, the conventional pooled estimate is unchanged. Overlapping study CIs still do not establish that true effects are identical.
 
 :::
